@@ -3,6 +3,7 @@ package solitaure;
 import java.awt.Graphics;
 
 class TablePile extends CardPile {
+	static final int cardMargin = 35;
 
 	TablePile(final int x, final int y, final int c) {
 		// initialize the parent class
@@ -30,9 +31,12 @@ class TablePile extends CardPile {
 
 	public boolean includes(final int tx, final int ty) {
 		// don't test bottom of card
-		return x <= tx && tx <= x + Card.width && y <= ty;
+		int margin = cardMargin * (getCardsCount() - 1);
+		margin = margin >= 0 ? margin : 0;
+		return x <= tx && tx <= x + Card.width
+				&& y + margin <= ty
+				&& ty <= y + margin + Card.height;
 	}
-
 	public void select(final int tx, final int ty) {
 		if (empty()) {
 			return;

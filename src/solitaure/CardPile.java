@@ -6,6 +6,7 @@ import java.awt.Graphics;
 class CardPile {
 
 	private Card firstCard;
+	private int cardsCount;
 
 	// coordinates of the card pile
 	protected int x;
@@ -15,6 +16,11 @@ class CardPile {
 		x = xl;
 		y = yl;
 		firstCard = null;
+		cardsCount = 0;
+	}
+	
+	public int getCardsCount(){
+		return cardsCount;
 	}
 
 	// the following are sometimes overridden
@@ -22,6 +28,7 @@ class CardPile {
 	public void addCard(final Card aCard) {
 		aCard.link = firstCard;
 		firstCard = aCard;
+		cardsCount++;
 	}
 
 	public boolean canTake(final Card aCard) {
@@ -51,6 +58,7 @@ class CardPile {
 		if (firstCard != null) {
 			result = firstCard;
 			firstCard = firstCard.link;
+			cardsCount--;
 		}
 		return result;
 	}
