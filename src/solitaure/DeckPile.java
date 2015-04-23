@@ -1,6 +1,5 @@
 package solitaure;
 
-
 class DeckPile extends CardPile {
 
 	DeckPile(final int x, final int y) {
@@ -34,14 +33,21 @@ class DeckPile extends CardPile {
 	}
 
 	public void select(final int tx, final int ty) {
+//		if(CanTakeCardPile.getSelectedPile()!=null){
+//			CanTakeCardPile.resetSelectedPile();
+//			return;
+//		}
 		if (empty()) {
 			backToDeckPile();
 			return;
 		}
+	
+	//	CanTakeCardPile.resetSelectedPile();
+
 		Solitaire.discardPile.addCard(pop());
 	}
 	
-private void backToDeckPile(){
+	private void backToDeckPile(){
 		
 		while( !Solitaire.discardPile.empty()) {
 			Card topCard = Solitaire.discardPile.pop();
@@ -51,5 +57,4 @@ private void backToDeckPile(){
 		}	
 		
 	}
-	
 }

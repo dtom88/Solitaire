@@ -7,6 +7,7 @@ class CardPile {
 
 	private Card firstCard;
 	private int cardsCount;
+	private static CardPile selectedPile;
 
 	// coordinates of the card pile
 	protected int x;
@@ -17,6 +18,17 @@ class CardPile {
 		y = yl;
 		firstCard = null;
 		cardsCount = 0;
+	}
+	
+	public static CardPile getSelectedPile(){
+		return selectedPile;
+	}
+	
+	public static void resetSelectedPile() {
+		selectedPile = null;
+	}
+	protected static void setSelectedPile(final CardPile pile){
+		selectedPile = pile;
 	}
 	
 	public int getCardsCount(){

@@ -1,5 +1,6 @@
 package solitaure;
 
+
 class DiscardPile extends CanTakeCardPile {
 
 	DiscardPile(final int x, final int y) {
@@ -17,7 +18,10 @@ class DiscardPile extends CanTakeCardPile {
 		if (empty()) {
 			return;
 		}
-		
-		super.select(tx, ty);
-	}
+		if(getSelectedPile() == null){
+			setSelectedPile(this);
+			}else{
+				resetSelectedPile();
+			}
+		}
 }

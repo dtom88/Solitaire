@@ -1,6 +1,6 @@
 package solitaure;
 
-class SuitPile extends CardPile {
+class SuitPile extends CanTakeCardPile {
 
 	SuitPile(final int x, final int y) {
 		super(x, y);

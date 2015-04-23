@@ -40,12 +40,26 @@ class Card {
 		return black;
 	}
 
+	public boolean isSelected(){
+		if(CardPile.getSelectedPile() != null){
+			Card selectedCard = CardPile.getSelectedPile().top();
+			int counter = (TablePile.getNumberOfSelectedCards()==0) ? 1 : TablePile.getNumberOfSelectedCards();
+			for (int i = 0; i < counter; i++) {
+				if(this == selectedCard){
+					return true;	
+				}
+				selectedCard = selectedCard.link;
+			}
+		}
+	return false;
+		}
+	
 	public void draw(final Graphics g, final int x, final int y) {
 		String names[] = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10",
 				"J", "Q", "K" };
 		// clear rectangle, draw border
 		g.clearRect(x, y, width, height);
-		g.setColor(Color.black);
+		g.setColor(isSelected() ? Color.green : Color.black);
 		g.drawRect(x, y, width, height);
 		// draw body of card
 		if (isFaceUp()) {
